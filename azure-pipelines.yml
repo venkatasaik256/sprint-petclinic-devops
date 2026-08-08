@@ -8,23 +8,23 @@ jobs:
 - job: Build
   displayName: Build and Publish JAR
   steps:
-- checkout: self
+  - checkout: self
 
-- task: Maven@4
-  displayName: 'Build and test with maven'
-  inputs:
-    mavenPOMFile: 'pom.xml'
-    goals: 'clean verify'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.21'
-    mavenVersionOption: 'Default'
+  - task: Maven@4
+    displayName: 'Build and test with maven'
+    inputs:
+      mavenPOMFile: 'pom.xml'
+      goals: 'clean verify'
+      javaHomeOption: 'JDKVersion'
+      jdkVersionOption: '1.21'
+      mavenVersionOption: 'Default'
 
-- task: PublishPipelineArtifact@1
-  displayName: 'publish JAR artifact'
-  inputs:
-    targetpath: '$(system.DefaultWorkingDirectory)/target/spring-petclinic-4.0.0-SNAPSHOT.jar'
-    artifact: 'petclinic-jar'
-    publishLocation: 'pipeline' 
+  - task: PublishPipelineArtifact@1
+    displayName: 'publish JAR artifact'
+    inputs:
+      targetpath: '$(system.DefaultWorkingDirectory)/target/spring-petclinic-4.0.0-SNAPSHOT.jar'
+      artifact: 'petclinic-jar'
+      publishLocation: 'pipeline' 
 
 - job: DockerBuild
   displayName: Download JAR
