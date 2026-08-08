@@ -16,6 +16,12 @@ steps:
     jdkVersionOption: '1.21'
     mavenVersionOption: 'Default'
 
+- task: PublishPipelineArtifact@1
+displayName: 'publish JAR artifact'
+inputs:
+  targetpath: '$ (system DefaultWorkingDirectory)/target'
+  artifact: 'petclinic-jar'
+
 
 
 
