@@ -3,8 +3,11 @@ trigger:
 
 pool:
   vmImage: ubuntu-latest
-
-steps:
+  
+jobs:
+- job: Build
+  displayName: Build and Publish JAR
+  steps:
 - checkout: self
 
 - task: Maven@4
@@ -22,6 +25,18 @@ steps:
     targetpath: '$(system.DefaultWorkingDirectory)/target/spring-petclinic-4.0.0-SNAPSHOT.jar'
     artifact: 'petclinic-jar'
     publishLocation: 'pipeline' 
+
+- job: DockerBuild
+  displayName: Download JAR
+  dependsOn: Build
+
+  steps:
+  - task: DownloadPipelineArtifact@2
+    displayName: 'Download JAR artifact'
+    inputs:
+      buildType: 'current'
+      artifactName: 'petclinic-jar'
+      targetPath: '$(Pipeline.Workspace)/petclinic-jar'
 
 
 
