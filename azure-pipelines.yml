@@ -19,8 +19,9 @@ steps:
 - task: PublishPipelineArtifact@1
 displayName: 'publish JAR artifact'
 inputs:
-  targetpath: '$ (system DefaultWorkingDirectory)/target'
+  targetpath: '$ (system DefaultWorkingDirectory)/target/spring-petclinic-4.0.0-SNAPSHOT.jar'
   artifact: 'petclinic-jar'
+  publishLocation: 'pipeline' 
 
 
 
