@@ -10,11 +10,11 @@ steps:
 - task: Maven@4
   displayName: 'Build and test with maven'
   inputs:
-  mavenPomFile: 'pom.xml'
-  goals: 'clean verify'
-  javahomeOptin: 'JDKVersion'
-  jdkversionOption: '1.21'
-  mavenversionOption:'default'
+    mavenPOMFile: 'pom.xml'
+    goals: 'clean verify'
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.21'
+    mavenVersionOption: 'Default'
 
 
 
