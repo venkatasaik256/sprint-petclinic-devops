@@ -28,9 +28,13 @@ spec:
       labels:
         app: petclinic
     spec:
+      imagepullSecrets:
+        - name: acr-secret
       containers:
-        - name: workload
-          image: dsyer/petclinic
+        - name: petclinic
+          image: petclinic256.azurecr.io/petclinic:latest
+          ports:
+            - containerport: 8080
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: postgres
