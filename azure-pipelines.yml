@@ -43,6 +43,15 @@ jobs:
   - script: docker build -t petclinic:latest .
     displayName: 'Build Docker image'
 
+  - task: Docker@2  
+    displayName: 'Push Docker image to ACR' 
+    inputs:
+      command: push 
+      containerRegistry: 'Petclinic-256'
+      repository: 'Petclinic'
+      tags: |
+        latest
+
 
 
 
