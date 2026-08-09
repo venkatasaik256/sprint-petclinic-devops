@@ -40,7 +40,7 @@ jobs:
 
   - script: cp $(Pipeline.Workspace)/petclinic-jar/spring-petclinic-4.0.0-SNAPSHOT.jar $(Build.SourcesDirectory)/
     displayName: 'Cpyy JAR t Docker build context'
-  - script: docker build -t petclinic:latest $(Build.SourceDirectry)
+  - script: docker build -t petclinic:latest $(Build.SourcesDirectry)
     displayName: 'Build Docker image'
 
 
