@@ -10,6 +10,7 @@ spec:
       targetPort: 8080
   selector:
     app: petclinic
+    
 
 ---
 apiVersion: apps/v1
@@ -28,7 +29,7 @@ spec:
       labels:
         app: petclinic
     spec:
-      imagepullSecrets:
+      imagePullSecrets:
         - name: acr-secret
       containers:
         - name: petclinic
@@ -56,13 +57,4 @@ spec:
             httpGet:
               path: /readyz
               port: http
-          volumeMounts:
-            - mountPath: /bindings/secret
-              name: binding
-              readOnly: true
-      volumes:
-        - name: binding
-          projected:
-            sources:
-              - secret:
-                  name: demo-db
+          
