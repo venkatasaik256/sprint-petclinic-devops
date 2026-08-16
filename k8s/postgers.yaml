@@ -9,10 +9,10 @@ spec:
       app: postgres
   template:
     metadata:
-       labels: 
-        app: postgers
-  spec:
-     containers: 
+      labels:
+        app: postgres
+    spec:
+      containers:
         - name: postgres
           image: postgres:16
           env:
