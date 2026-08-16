@@ -7,11 +7,11 @@ spec:
   selector: 
     matchLabels:
       app: postgres
-    template:
-      metadata:
-        labels: 
-          sapp: postgers
-   spec:
+  template:
+    metadata:
+       labels: 
+        app: postgers
+  spec:
      containers: 
         - name: postgres
           image: postgres:16
