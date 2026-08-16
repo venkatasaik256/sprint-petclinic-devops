@@ -1,10 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
-metadata: 
-  name: postgers
+metadata:
+  name: postgres
 spec:
   replicas: 1
-  selector: 
+  selector:
     matchLabels:
       app: postgres
   template:
@@ -16,8 +16,12 @@ spec:
         - name: postgres
           image: postgres:16
           env:
+            - name: POSTGRES_DB
+              value: petclinic
+            - name: POSTGRES_USER
+              value: petclinic
             - name: POSTGRES_PASSWORD
-              value: postgres
+              value: petclinic
           ports:
             - containerPort: 5432
 ---
@@ -30,4 +34,4 @@ spec:
     app: postgres
   ports:
     - port: 5432
-      targetPort: 5432 
+      targetPort: 5432
